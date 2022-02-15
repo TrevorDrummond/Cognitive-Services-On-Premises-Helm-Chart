@@ -1,0 +1,26 @@
+{{- if .Values.textanalytics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: text-analytics
+  namespace: {{ .Release.Namespace }}
+  {{- if .Values.textanalytics.service.annotations }}
+  annotations:
+    {{- range $key, $value := .Values.textanalytics.service.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+  labels:
+    app: text-analytics
+    chart: {{ template "textAnalytics.chart" .}}
+    release: {{ .Release.Name }}
+spec:
+  type: {{ .Values.textanalytics.service.type }}
+  ports:
+    - port: {{ .Values.textanalytics.service.port }}
+      targetPort: {{ .Values.textanalytics.service.containerPort }}
+      protocol: TCP
+      name: http
+  selector:
+    app: text-analytics
+{{- end }}

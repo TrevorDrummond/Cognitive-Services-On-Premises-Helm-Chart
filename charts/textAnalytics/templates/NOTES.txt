@@ -1,0 +1,1 @@
+text analytics has been deployed successfully!
