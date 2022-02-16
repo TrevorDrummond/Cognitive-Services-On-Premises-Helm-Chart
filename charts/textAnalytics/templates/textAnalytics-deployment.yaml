@@ -1,4 +1,4 @@
-{{- if .Values.textanalytics.enabled }}
+{{- if .Values.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,7 +9,7 @@ metadata:
     chart: {{ template "textAnalytics.chart" .}}
     release: {{ .Release.Name }}
 spec:
-  replicas: {{ .Values.textanalytics.service.autoScaler.minAvailablePods }}
+  replicas: {{ .Values.service.autoScaler.minAvailablePods }}
   selector:
     matchLabels:
       app: text-analytics
@@ -20,25 +20,25 @@ spec:
     spec:
       containers:
         - name: text-analytics-container
-          image: {{ template "image.full" .Values.textanalytics.image }}
-          imagePullPolicy: {{ template "image.pull" .Values.textanalytics.image }}
-          {{- include "image.args" .Values.textanalytics.image.args | nindent 10 }}
+          image: {{ template "image.full" .Values.image }}
+          imagePullPolicy: {{ template "image.pull" .Values.image }}
+          {{- include "image.args" .Values.image.args | nindent 10 }}
           ports:
             - name: http
-              containerPort: {{ .Values.textanalytics.service.containerPort }}
+              containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
           readinessProbe:
             httpGet:
               path: /status
-              port: {{ .Values.textanalytics.service.containerPort }}
+              port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 20
           livenessProbe:
             httpGet:
               path: /status
-              port: {{ .Values.textanalytics.service.containerPort }}
+              port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 20
             periodSeconds: 5
-          {{- include "textanalytics.image.resources" .Values | nindent 10 }}
+          {{- include "image.resources" .Values | nindent 10 }}
       imagePullSecrets:
-        {{ template "image.secrets" .Values.textanalytics.image.pullSecrets }}
+        {{ template "image.secrets" .Values.image.pullSecrets }}
 {{- end }}

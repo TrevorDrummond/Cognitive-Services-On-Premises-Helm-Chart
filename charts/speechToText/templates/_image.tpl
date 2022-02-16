@@ -25,7 +25,7 @@ Create args that required by stt container
 {{- if not (has $eulaInput $eulaAllowedValues) }}
   {{- fail (printf "Unsupported eula: %s, must be {accept}" $eulaInput) }}
 {{- end -}}
-{{- if .textanalytics.enabled -}}
+{{- if .sentimentEnabled -}}
 {{- $sentimentendpoint := printf "http://%s:%.0f/%s" "text-analytics" .textanalytics.service.port .textanalytics.service.sentimentURISuffix -}}
 args: [{{- .image.args.eula | printf "eula=%s" | quote -}}, {{- required "missing required image.args.billing" .image.args.billing | printf "billing=%s" | quote -}}, {{- required "missing required image.args.apikey" .image.args.apikey | printf "apikey=%s" | quote -}}, {{- $sentimentendpoint | printf "CloudAI:SentimentAnalysisSettings:TextAnalyticsHost=%s" | quote -}}]
 {{- else -}}

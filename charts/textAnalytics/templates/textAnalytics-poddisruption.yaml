@@ -1,15 +1,15 @@
-{{- if and .Values.textanalytics.enabled .Values.textanalytics.service.podDisruption.enabled }}
+{{- if and .Values.enabled .Values.service.podDisruption.enabled }}
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ .Values.textanalytics.service.podDisruption.name }}
+  name: {{ .Values.service.podDisruption.name }}
   namespace: {{ .Release.Namespace }}
   labels:
     app: text-analytics
     chart: {{ template "textAnalytics.chart" .}}
     release: {{ .Release.Name }}
 spec:
-  maxUnavailable: {{ .Values.textanalytics.service.podDisruption.maxUnavailable }}
+  maxUnavailable: {{ .Values.service.podDisruption.maxUnavailable }}
   selector:
     matchLabels:
       app: text-analytics

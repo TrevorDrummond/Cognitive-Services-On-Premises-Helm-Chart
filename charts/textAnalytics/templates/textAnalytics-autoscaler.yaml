@@ -1,8 +1,8 @@
-{{- if and .Values.textanalytics.enabled .Values.textanalytics.service.autoScaler.enabled }}
+{{- if and .Values.enabled .Values.service.autoScaler.enabled }}
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ .Values.textanalytics.service.autoScaler.name }}
+  name: {{ .Values.service.autoScaler.name }}
   namespace: {{ .Release.Namespace }}
   labels:
     app: text-analytics
@@ -13,8 +13,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: text-analytics
-  minReplicas: {{ .Values.textanalytics.service.autoScaler.minAvailablePods }}
-  maxReplicas: {{ .Values.textanalytics.service.autoScaler.maxAvailablePods }}
+  minReplicas: {{ .Values.service.autoScaler.minAvailablePods }}
+  maxReplicas: {{ .Values.service.autoScaler.maxAvailablePods }}
 
   metrics:
   - type: Resource

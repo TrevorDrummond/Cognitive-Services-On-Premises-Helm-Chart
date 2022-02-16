@@ -2,10 +2,13 @@ apiVersion: v2
 dependencies:
 - name: speechToText
   repository: file://./charts/speechToText
-  version: 0.2.0
+  version: 0.3.0
 - name: textToSpeech
   repository: file://./charts/textToSpeech
-  version: 0.2.0
+  version: 0.3.0
+- name: textAnalytics
+  repository: file://./charts/textAnalytics
+  version: 0.3.0
 description: A Helm chart for Kubernetes for all on-prem speech service components
 home: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto-on-premises
 keywords:

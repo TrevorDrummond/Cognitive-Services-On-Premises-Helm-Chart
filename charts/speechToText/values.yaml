@@ -1,6 +1,12 @@
 # Default values for speech-to-text.
 enabled: false
 
+#Enable Speech to text to call a textAnalyticsContainer for sentimentAnalysis
+sentimentEnabled: false
+sentimentPort:
+sentimentURISuffix:
+
+
 # How many concurrent requests needed to run speech-to-text service.
 # Default is 2.
 numberOfConcurrentRequest: 2
