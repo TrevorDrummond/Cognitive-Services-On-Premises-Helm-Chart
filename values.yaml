@@ -9,6 +9,8 @@
 # Refer to the charts/speechToText/values.yaml
 speechToText:
   enabled: false
+  #If you set this to enabled you must also enable the textAnalytics deployment below
+  sentimentEnabled: false
 
   # Values used for "helm test", staying with speech-onprem/values.yaml
   verification:
@@ -44,7 +46,6 @@ textToSpeech:
         - "--host=$(TEXT_TO_SPEECH_HOST)"
         - "--port=$(TEXT_TO_SPEECH_PORT)"
 
-
 luis:
   enabled: false  
   verification:
@@ -67,3 +68,9 @@ diagnostic:
       tag: latest
       pullByHash: false
       arguments:
+textAnalytics:
+  enabled: false
+
+translator:
+  enabled: false
+  languages: en,fr

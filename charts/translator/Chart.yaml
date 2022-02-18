@@ -1,0 +1,9 @@
+apiVersion: v1
+appVersion: "3.0"
+description: A Helm chart for Kubernetes deployment of translator
+keywords:
+- translator
+- on-prem
+- language
+name: translator
+version: 0.3.0
