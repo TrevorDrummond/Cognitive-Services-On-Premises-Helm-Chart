@@ -1,0 +1,6 @@
+enabled: false
+storage: 5Gi
+name: my-azurefile
+provisioner: file.csi.azure.com # replace with "kubernetes.io/azure-file" if aks version is less than 1.21
+aks: true
+storageClassName: my-azurefile

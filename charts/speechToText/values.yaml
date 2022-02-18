@@ -6,6 +6,7 @@ sentimentEnabled: false
 sentimentPort: 5000
 sentimentURISuffix: text/analytics/v3.0/sentiment
 
+agentpool: agentpool
 
 # How many concurrent requests needed to run speech-to-text service.
 # Default is 2.

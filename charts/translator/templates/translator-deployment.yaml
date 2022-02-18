@@ -18,11 +18,15 @@ spec:
       labels:
         app: {{ template "translator.name" .}}
     spec:
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: my-azurefile
       containers:
         - name: translator-container
           image: {{ template "image.full" .Values.image }}
           imagePullPolicy: {{ template "image.pull" .Values.image }}
-          {{- include "image.args" .Values.image.args | nindent 10 }}
+          {{- include "lts.image.args" .Values.image.args | nindent 10 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.containerPort }}
@@ -38,9 +42,12 @@ spec:
               port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 10
             periodSeconds: 5
-          {{- include "tts.image.resources" .Values | nindent 10 }}
-      imagePullSecrets:
-        {{ template "image.secrets" .Values.image.pullSecrets }}
+          volumeMounts:
+            - mountPath: "/usr/local/models"
+              name: volume
       nodeSelector: 
         agentpool: {{ .Values.agentpool }}
+
+      imagePullSecrets:
+        {{ template "image.secrets" .Values.image.pullSecrets }}
 {{- end }}

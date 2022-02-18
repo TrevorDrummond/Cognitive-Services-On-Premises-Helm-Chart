@@ -19,13 +19,13 @@ Create a pull policy based on whether we pull by hash or tag
 {{/*
 Create args that required by container
 */}}
-{{- define "image.args" -}}
+{{- define "lts.image.args" -}}
 {{- $eulaAllowedValues := list "accept" }}
-{{- $eulaInput := .eula }}
+{{- $eulaInput :=  .eula }}
 {{- if not (has $eulaInput $eulaAllowedValues) }}
   {{- fail (printf "Unsupported eula: %s, must be {accept}" $eulaInput) }}
 {{- end -}}
-args: [{{- .eula | printf "eula=%s" | quote -}}, {{- required "missing required image.args.billing" .billing | printf "billing=%s" | quote -}}, {{- required "missing required image.args.apikey" .apikey | printf "apikey=%s" | quote -}}]
+args: [{{- .languages | printf "Languages=%s" | quote -}},{{- .eula | printf "eula=%s" | quote -}}, {{- required "missing required image.args.billing" .billing | printf "billing=%s" | quote -}}, {{- required "missing required image.args.apikey" .apikey | printf "apikey=%s" | quote -}}]
 {{- end -}}
 
 {{/*

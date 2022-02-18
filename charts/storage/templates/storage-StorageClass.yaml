@@ -1,0 +1,18 @@
+{{- if .Values.enabled }}
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+    name: {{ .Values.name }}
+    namespace: {{ .Release.Namespace }}
+provisioner: {{ .Values.provisioner }} # replace with "kubernetes.io/azure-file" if aks version is less than 1.21
+mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=0
+    - gid=0
+    - mfsymlinks
+    - cache=strict
+    - actimeo=30
+parameters:
+   skuName: Standard_LRS
+{{- end }}

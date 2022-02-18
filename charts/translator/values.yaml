@@ -33,8 +33,7 @@ image:
     # The value of this option must be set to an API key for the provisioned resource specified in Billing.
     apikey:
     # Language models to download and deploy to translate container
-    #
-    Languages:
+    languages:
 
   # pullByHash default is false.
   # If want to pull docker image by hash, add below two lines:
