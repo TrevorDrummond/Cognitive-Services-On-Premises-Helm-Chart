@@ -1,0 +1,15 @@
+#Sample helm install command:
+# helm install . -g --dry-run -f .\dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+textAnalytics:
+  enabled: true
+  image:
+    args:
+      # Indicates that you've accepted the license for the container.
+      # The value of this option must be: accept.
+      eula: accept
+      # This is used for specify billing endpoint URI.
+      # The billing endpoint URI value is available on the Azure portal's Speech Overview page.
+      billing: 3
+      # The API key of the Cognitive Service resource used to track billing information.
+      # The value of this option must be set to an API key for the provisioned resource specified in Billing.
+      apikey: 7
