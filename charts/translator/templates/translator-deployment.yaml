@@ -41,4 +41,6 @@ spec:
           {{- include "tts.image.resources" .Values | nindent 10 }}
       imagePullSecrets:
         {{ template "image.secrets" .Values.image.pullSecrets }}
+      nodeSelector: 
+        agentpool: {{ .Values.agentpool }}
 {{- end }}

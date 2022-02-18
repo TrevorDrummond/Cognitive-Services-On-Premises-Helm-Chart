@@ -19,7 +19,7 @@ spec:
         app: text-analytics
     spec:
       containers:
-        - name: text-analytics-container
+        - name: text-analytics-container    
           image: {{ template "image.full" .Values.image }}
           imagePullPolicy: {{ template "image.pull" .Values.image }}
           {{- include "image.args" .Values.image.args | nindent 10 }}
@@ -41,4 +41,6 @@ spec:
           {{- include "image.resources" .Values | nindent 10 }}
       imagePullSecrets:
         {{ template "image.secrets" .Values.image.pullSecrets }}
+      nodeSelector: 
+        agentpool: {{ .Values.agentpool }}
 {{- end }}
