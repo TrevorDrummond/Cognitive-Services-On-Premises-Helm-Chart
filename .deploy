@@ -1,1 +1,2 @@
-helm install . -g --dry-run -f .\dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+# helm install . -g --dry-run -f dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+helm install . -g --dry-run -f dev-local.yaml
