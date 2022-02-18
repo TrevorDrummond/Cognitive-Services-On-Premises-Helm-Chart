@@ -25,7 +25,7 @@ Create args that required by container
 {{- if not (has $eulaInput $eulaAllowedValues) }}
   {{- fail (printf "Unsupported eula: %s, must be {accept}" $eulaInput) }}
 {{- end -}}
-args: [{{- .languages | printf "Languages=%s" | quote -}},{{- .eula | printf "eula=%s" | quote -}}, {{- required "missing required image.args.billing" .billing | printf "billing=%s" | quote -}}, {{- required "missing required image.args.apikey" .apikey | printf "apikey=%s" | quote -}}]
+args: [{{- .eula | printf "eula=%s" | quote -}}, {{- required "missing required image.args.billing" .billing | printf "billing=%s" | quote -}}, {{- required "missing required image.args.apikey" .apikey | printf "apikey=%s" | quote -}},{{- .languages | printf "Languages=%s" | quote -}}]
 {{- end -}}
 
 {{/*

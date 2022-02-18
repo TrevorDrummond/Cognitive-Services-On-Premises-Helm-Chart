@@ -45,6 +45,15 @@ spec:
           volumeMounts:
             - mountPath: "/usr/local/models"
               name: volume
+          env:
+          - name: Languages
+            value: "en"
+          - name: eula
+            value: "accept"
+          - name: billing
+            value: "https://api-apc.cognitive.microsofttranslator.com/"
+          - name: apikey
+            value: {{ .Values.image.args.apikey }}
       nodeSelector: 
         agentpool: {{ .Values.agentpool }}
 
