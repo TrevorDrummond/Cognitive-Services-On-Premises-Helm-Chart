@@ -1,0 +1,18 @@
+source: https://docs.microsoft.com/en-us/Azure/cognitive-services/translator/containers/translator-how-to-install-container#container-requirements-and-recommendations
+
+CONTAINER REQUIREMENTS AND RECOMMENDATIONS
+Container	Minimum	Recommended	Language Pair
+Translator connected	2 core, 2-GB memory	4 core, 8-GB memory	4
+
+
+docker run --rm -it -p 5000:80 --memory 12g --cpus 4 \
+-v /mnt/d/TranslatorContainer:/usr/local/models \
+-e apikey={API_KEY} \
+-e eula=accept \
+-e billing={ENDPOINT_URI} \
+-e Languages=en,fr,es,ar,ru  \
+mcr.microsoft.com/azure-cognitive-services/translator/text-translation
+
+
+curl -X POST "http://localhost:5000/translate?api-version=3.0&from=en&to=zh-HANS"
+    -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"

@@ -12,6 +12,9 @@ dependencies:
 - name: luis
   repository: file://./charts/luis
   version: 0.1.0
+- name: translator
+  repository: file://./charts/translator
+  version: 0.1.0
 - name: diagnostic
   repository: file://./charts/diagnostic
   version: 0.1.0
@@ -22,6 +25,7 @@ keywords:
 - text-to-speech
 - text-analytics
 - luis
+- translator
 - diagnostic
 - on-prem
 - azure-cognitive-services

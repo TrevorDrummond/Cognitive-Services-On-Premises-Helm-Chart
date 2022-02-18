@@ -57,6 +57,18 @@ luis:
       arguments:
 
 
+translator:
+  enabled: false
+  verification:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: antsu/on-prem-client
+      tag: latest
+      pullByHash: false
+      arguments:
+      
+
 diagnostic:
   enabled: false
   verification:
@@ -67,3 +79,4 @@ diagnostic:
       tag: latest
       pullByHash: false
       arguments:
+

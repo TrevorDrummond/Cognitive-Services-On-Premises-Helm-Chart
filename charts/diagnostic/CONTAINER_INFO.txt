@@ -1,0 +1,8 @@
+source: https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-container-howto?tabs=v3#troubleshooting
+
+docker run --rm mcr.microsoft.com/azure-cognitive-services/diagnostic \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+
