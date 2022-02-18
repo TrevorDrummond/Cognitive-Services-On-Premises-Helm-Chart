@@ -43,3 +43,27 @@ textToSpeech:
         - "--input=What's the weather like?"
         - "--host=$(TEXT_TO_SPEECH_HOST)"
         - "--port=$(TEXT_TO_SPEECH_PORT)"
+
+
+luis:
+  enabled: false  
+  verification:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: antsu/on-prem-client
+      tag: latest
+      pullByHash: false
+      arguments:
+
+
+diagnostic:
+  enabled: false
+  verification:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: antsu/on-prem-client
+      tag: latest
+      pullByHash: false
+      arguments:
