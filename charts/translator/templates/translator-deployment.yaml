@@ -18,10 +18,12 @@ spec:
       labels:
         app: {{ template "translator.name" .}}
     spec:
+    {{- if .Values.useVolumeMount}}
       volumes:
-        - name: volume
+        - name: {{.Values.volumeName}}
           persistentVolumeClaim:
-            claimName: my-azurefile
+            claimName: {{.Values.claimName}}
+    {{ end }}
       containers:
         - name: translator-container
           image: {{ template "image.full" .Values.image }}
@@ -34,16 +36,21 @@ spec:
             httpGet:
               path: /status
               port: {{ .Values.service.containerPort }}
-            initialDelaySeconds: 10
+            initialDelaySeconds: 60
           livenessProbe:
             httpGet:
               path: /status
               port: {{ .Values.service.containerPort }}
-            initialDelaySeconds: 10
+            initialDelaySeconds: 60
             periodSeconds: 5
+          resources:
+            requests:
+              memory: "24Gi"
+          {{- if .Values.useVolumeMount}}
           volumeMounts:
             - mountPath: "/usr/local/models"
-              name: volume
+              name: {{.Values.volumeName}}
+          {{- end }}
           env:
           {{- include "helpers.list-env-variables" .Values.image | indent 10 }}
       nodeSelector: 
