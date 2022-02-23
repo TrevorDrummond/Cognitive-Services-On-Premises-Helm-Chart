@@ -1,2 +1,2 @@
 translator has been deployed successfully!
-{{.Values.image.args.endpoint}}, {{.Values.image.args.languages}}
+{{.Values.image.env.endpoint}}, {{.Values.image.env.languages}}

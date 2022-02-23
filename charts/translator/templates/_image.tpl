@@ -82,3 +82,10 @@ resources:
     {{- $_ := set . "_return" $result }}
 {{- end }}
 {{- end -}}
+
+{{- define "helpers.list-env-variables" }}
+{{- range $key, $val := .env }}
+- name: {{ $key }}
+  value: {{ $val | quote }}
+{{- end}}
+{{- end }}

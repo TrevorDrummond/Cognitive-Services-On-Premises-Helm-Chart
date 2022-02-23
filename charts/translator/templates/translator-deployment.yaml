@@ -26,7 +26,6 @@ spec:
         - name: translator-container
           image: {{ template "image.full" .Values.image }}
           imagePullPolicy: {{ template "image.pull" .Values.image }}
-          {{- include "lts.image.args" .Values.image.args | nindent 10 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.containerPort }}
@@ -46,14 +45,7 @@ spec:
             - mountPath: "/usr/local/models"
               name: volume
           env:
-          - name: Languages
-            value: "en"
-          - name: eula
-            value: "accept"
-          - name: billing
-            value: "https://api-apc.cognitive.microsofttranslator.com/"
-          - name: apikey
-            value: {{ .Values.image.args.apikey }}
+          {{- include "helpers.list-env-variables" .Values.image | indent 10 }}
       nodeSelector: 
         agentpool: {{ .Values.agentpool }}
 

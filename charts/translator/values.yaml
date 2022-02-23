@@ -21,8 +21,11 @@ image:
   # A list of secrets used to pull docker image
   pullSecrets:
 
-  # eula, billing and apikey are required args that user should provide valid values.
-  args:
+  # languages,eula, billing and apikey are required args that user should provide valid values.
+  # This contiainer uses environment variables rather than arguements
+  env:
+    # Language models to download and deploy to translate container
+    languages: en
     # Indicates that you've accepted the license for the container.
     # The value of this option must be: accept.
     eula:
@@ -32,8 +35,7 @@ image:
     # The API key of the Cognitive Service resource used to track billing information.
     # The value of this option must be set to an API key for the provisioned resource specified in Billing.
     apikey:
-    # Language models to download and deploy to translate container
-    languages:
+
 
   # pullByHash default is false.
   # If want to pull docker image by hash, add below two lines:
