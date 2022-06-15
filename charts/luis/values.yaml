@@ -9,7 +9,6 @@ numberOfConcurrentRequest: 2
 # Default is false.
 optimizeForTurboMode: false
 
-agentpool: agentpool
 
 # Image below is ONLY a sample.
 # Please modify the image to your own image direction.

@@ -3,13 +3,12 @@ enabled: false
 
 # How many concurrent requests needed to run text-to-speech service.
 # Default is 2.
-numberOfConcurrentRequest: 2
+numberOfConcurrentRequest: 1
 
 # This is used to set if service is required to optimize for high usage (which requires more resources)
 # Default is false.
 optimizeForTurboMode: false
 
-agentpool: agentpool
 
 # Image below is ONLY a sample.
 # Please modify the image to your own image direction.

@@ -6,15 +6,14 @@ sentimentEnabled: false
 sentimentPort: 5000
 sentimentURISuffix: text/analytics/v3.0/sentiment
 
-agentpool: agentpool
 
-# How many concurrent requests needed to run speech-to-text service.
+# How many concurrent requests needede to run speech-to-text service.
 # Default is 2.
-numberOfConcurrentRequest: 2
+numberOfConcurrentRequest: 1
 
 # This is used to set if service is required to optimize for audio input by files.
 # Default is false.
-optimizeForAudioFile: false
+optimizeForAudioFile: true
 
 # Image below is ONLY a sample.
 # Please modify the image to your own image direction.
@@ -58,7 +57,7 @@ service:
     enabled: true
     name: speech-to-text-autoscaler
 
-    minAvailablePods: 2
+    minAvailablePods: 1
     maxAvailablePods: 10
 
   podDisruption:

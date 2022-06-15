@@ -72,5 +72,5 @@ textAnalytics:
   enabled: false
 
 translator:
-  enabled: false
-  languages: en
+  enabled: true
+  languages: en,ru

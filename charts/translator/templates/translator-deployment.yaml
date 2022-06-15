@@ -41,11 +41,11 @@ spec:
             httpGet:
               path: /status
               port: {{ .Values.service.containerPort }}
-            initialDelaySeconds: 60
+            initialDelaySeconds: 240
             periodSeconds: 5
           resources:
             requests:
-              memory: "24Gi"
+              memory: "16Gi"
           {{- if .Values.useVolumeMount}}
           volumeMounts:
             - mountPath: "/usr/local/models"
@@ -53,8 +53,7 @@ spec:
           {{- end }}
           env:
           {{- include "helpers.list-env-variables" .Values.image | indent 10 }}
-      nodeSelector: 
-        agentpool: {{ .Values.agentpool }}
+
 
       imagePullSecrets:
         {{ template "image.secrets" .Values.image.pullSecrets }}

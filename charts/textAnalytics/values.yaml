@@ -33,7 +33,6 @@ cpuLimit: 8000m
 memoryRequest: 3Gi
 memoryLimit: 8Gi
 
-agentpool: agentpool
 
 service:
   # URI suffix for sentiment analysis, the whole URI is in format "http://<service>:<port>/<sentimentURISuffix>".

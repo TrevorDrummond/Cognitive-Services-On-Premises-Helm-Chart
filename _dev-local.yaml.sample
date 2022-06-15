@@ -13,11 +13,9 @@ textAnalytics:
       # The API key of the Cognitive Service resource used to track billing information.
       # The value of this option must be set to an API key for the provisioned resource specified in Billing.
       apikey: XX
-  agentpool: agentpool
 
 speechToText:
   enabled: true
-  agentpool: cognitive
   image:
     args:
       # Indicates that you've accepted the license for the container.
