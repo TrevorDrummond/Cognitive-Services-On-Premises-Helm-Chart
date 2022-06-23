@@ -1,0 +1,47 @@
+#Sample helm install command:
+# helm install . -g --dry-run -f .\dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+textAnalytics:
+  enabled: false
+  image:
+    args:
+      # Indicates that you've accepted the license for the container.
+      # The value of this option must be: accept.
+      eula: accept
+      # This is used for specify billing endpoint URI.
+      # The billing endpoint URI value is available on the Azure portal's Speech Overview page.
+      billing: https://textcontainers.cognitiveservices.azure.com/ 
+      # The API key of the Cognitive Service resource used to track billing information.
+      # The value of this option must be set to an API key for the provisioned resource specified in Billing.
+      apikey: df48fa7057ca49fd9fb815a2a4dd180e
+
+speechToText:
+  enabled: false
+  image:
+    args:
+      # Indicates that you've accepted the license for the container.
+      # The value of this option must be: accept.
+      eula: accept
+      # This is used for specify billing endpoint URI.
+      # The billing endpoint URI value is available on the Azure portal's Speech Overview page.
+      billing: https://textcontainers.cognitiveservices.azure.com/ 
+      # The API key of the Cognitive Service resource used to track billing information.
+      # The value of this option must be set to an API key for the provisioned resource specified in Billing.
+      apikey: df48fa7057ca49fd9fb815a2a4dd180e
+
+translator:
+  enabled: true
+  image:
+    env:
+      # Indicates that you've accepted the license for the container.
+      # The value of this option must be: accept.
+      eula: accept
+      # This is used for specify billing endpoint URI.
+      # The billing endpoint URI value is available on the Azure portal's Speech Overview page.
+      billing: https://textcontainers.cognitiveservices.azure.com/ 
+      # The API key of the Cognitive Service resource used to track billing information.
+      # The value of this option must be set to an API key for the provisioned resource specified in Billing.
+      apikey: df48fa7057ca49fd9fb815a2a4dd180e
+      languages: en,ru,el,fr
+  useVolumeMount: True
+  volumeName: translator
+  claimName: translator

@@ -73,4 +73,7 @@ textAnalytics:
 
 translator:
   enabled: true
-  languages: en,ru
+  languages: en,ru,el,fr
+  useVolumeMount: False
+  volumeName: translator
+  claimName: translator

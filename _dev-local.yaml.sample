@@ -1,5 +1,6 @@
 #Sample helm install command:
-# helm install . -g --dry-run -f .\dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+# helm install cogservices . -g --dry-run -f .\dev-local.yaml --set textAnalytics.image.args.apikey=$APIKEY
+
 textAnalytics:
   enabled: true
   image:
